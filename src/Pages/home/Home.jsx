@@ -1,7 +1,8 @@
-import React from 'react'
-import Hero from './hero/hero'
-import Services from './services/Services'
-import TopSearch from './topsearch/TopSearch'
+import React, { Suspense } from 'react'
+import Hero from './hero/Hero'
+
+const Services = React.lazy(() => import('./services/Services'))
+const TopSearch = React.lazy(() => import('./topsearch/TopSearch'))
 
 const Home = () => {
   return (
@@ -10,10 +11,14 @@ const Home = () => {
         <Hero />
 
         {/* Services */}
-        <Services />
+        <Suspense fallback={<div className="w-full text-center text-neutral-500">Loading services...</div>}>
+          <Services />
+        </Suspense>
 
         { /* Top Search */ }
-        <TopSearch />
+        <Suspense fallback={<div className="w-full text-center text-neutral-500">Loading top searches...</div>}>
+          <TopSearch />
+        </Suspense>
     </div>
     
  

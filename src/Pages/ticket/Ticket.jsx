@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import TopLayout from '../../layout/toppage/TopLayout'
 import RootLayout from '../../layout/RootLayout'
 
 import { motion } from 'framer-motion'
-import Search from '../home/hero/search/Search'
-import Filter from './filter/Filter'
-import SearchResult from './searchresult/SearchResult'
+
+const Search = React.lazy(() => import('../home/hero/search/Search'))
+const Filter = React.lazy(() => import('./filter/Filter'))
+const SearchResult = React.lazy(() => import('./searchresult/SearchResult'))
 
 const Ticket = () => {
   return (
@@ -36,7 +37,9 @@ const Ticket = () => {
                     </motion.h1>
                 
                     {/* Search */}
-                    <Search />
+                    <Suspense fallback={<div className="w-full text-center text-neutral-500">Loading search...</div>}>
+                      <Search />
+                    </Suspense>
                        
                 </div>
 
@@ -46,11 +49,15 @@ const Ticket = () => {
 
                        {/* Filter section  */}
                        <div className="col-span-1">
-                           <Filter className="space-y-4 sticky top-52 z-20" />
+                           <Suspense fallback={<div className="text-neutral-500">Loading filters...</div>}>
+                             <Filter className="space-y-4 sticky top-52 z-20" />
+                           </Suspense>
                        </div>
 
                        {/* Search section */}
-                          <SearchResult />
+                          <Suspense fallback={<div className="col-span-3 text-neutral-500">Loading results...</div>}>
+                            <SearchResult />
+                          </Suspense>
                     </div>
 
       </RootLayout>
