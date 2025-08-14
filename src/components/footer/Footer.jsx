@@ -131,15 +131,15 @@ const Footer = () => {
 
              <div className="flex items-center gap-x-2">
               <div className="">
-                     <img src={MasterCaedImg} alt="" className="w-fit h-9 object contain object-center" />
+                     <img src={MasterCaedImg} alt="Mastercard" loading="lazy" decoding="async" fetchpriority="low" className="w-fit h-9 object contain object-center" />
               </div>
               
               <div className="">
-                     <img src={PaypalImg} alt="" className="w-fit h-9 object contain object-center" />
+                     <img src={PaypalImg} alt="Paypal" loading="lazy" decoding="async" fetchpriority="low" className="w-fit h-9 object contain object-center" />
               </div>
 
               <div className="">
-                     <img src={CreditCardImg} alt="" className="w-fit h-9 object contain object-center" />
+                     <img src={CreditCardImg} alt="Credit Card" loading="lazy" decoding="async" fetchpriority="low" className="w-fit h-9 object contain object-center" />
               </div>
 
         </div>

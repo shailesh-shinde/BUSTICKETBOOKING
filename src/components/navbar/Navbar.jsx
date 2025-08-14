@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { FaX } from 'react-icons/fa6'; // Ensure you have the correct package installed
 import { Link } from 'react-router-dom';
@@ -34,7 +34,7 @@ const Navbar = () => {
     };
 
     // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Clean up event listener on component unmount
     return () => {
@@ -78,4 +78,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);
